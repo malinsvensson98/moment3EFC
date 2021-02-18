@@ -1,0 +1,59 @@
+@model IEnumerable<moment3.Models.Cd>
+
+@{
+    ViewData["Title"] = "CD";
+}
+
+<h1>CD</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Artist)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Length)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genres)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artist)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genres.GenresName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CdId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CdId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CdId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
